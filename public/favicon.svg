@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#141010"/>
+  <!-- 胶片两侧的片孔 -->
+  <rect x="4" y="7" width="3" height="3" rx="0.8" fill="#f97316"/>
+  <rect x="4" y="14.5" width="3" height="3" rx="0.8" fill="#f97316"/>
+  <rect x="4" y="22" width="3" height="3" rx="0.8" fill="#f97316"/>
+  <rect x="25" y="7" width="3" height="3" rx="0.8" fill="#f97316"/>
+  <rect x="25" y="14.5" width="3" height="3" rx="0.8" fill="#f97316"/>
+  <rect x="25" y="22" width="3" height="3" rx="0.8" fill="#f97316"/>
+  <!-- 两格画面 -->
+  <rect x="9.5" y="7" width="13" height="8" rx="1.2" fill="#ffc89a"/>
+  <rect x="9.5" y="17" width="13" height="8" rx="1.2" fill="#f97316"/>
+</svg>

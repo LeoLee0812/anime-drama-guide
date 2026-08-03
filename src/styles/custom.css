@@ -1,0 +1,78 @@
+/* 从 0 开始的 AI 漫剧之旅 —— 全站视觉定制
+   主色取自漫剧常用的对比色：暖橙（打光）+ 冷紫（夜戏），暗色为默认体验 */
+
+:root {
+  /* Starlight 强调色（暖橙系，呼应「胶片暖光」） */
+  --sl-color-accent-low: #4a2410;
+  --sl-color-accent: #f97316;
+  --sl-color-accent-high: #ffc89a;
+
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f0eaea;
+  --sl-color-gray-2: #c7bcbc;
+  --sl-color-gray-3: #8a7d7d;
+  --sl-color-gray-4: #524746;
+  --sl-color-gray-5: #322a2a;
+  --sl-color-gray-6: #211c1c;
+  --sl-color-black: #141010;
+
+  --sl-content-width: 50rem;
+  /* 中文正文阅读优化 */
+  --sl-line-height: 1.85;
+  --sl-text-code: 0.9em;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #ffe4cc;
+  --sl-color-accent: #ea580c;
+  --sl-color-accent-high: #7c2d12;
+
+  --sl-color-white: #141010;
+  --sl-color-gray-1: #2c2424;
+  --sl-color-gray-2: #4d4242;
+  --sl-color-gray-3: #756969;
+  --sl-color-gray-4: #a1918f;
+  --sl-color-gray-5: #ded5d3;
+  --sl-color-gray-6: #f3edeb;
+  --sl-color-gray-7: #faf7f6;
+  --sl-color-black: #ffffff;
+}
+
+/* 中文正文排版：段落间距拉开，读长文不累 */
+.sl-markdown-content p {
+  margin-block: 1.1rem;
+}
+
+.sl-markdown-content h2 {
+  margin-top: 2.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--sl-color-gray-5);
+}
+
+/* 表格是这份指南的主要载体，做成可横向滚动且不挤 */
+.sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-size: 0.92rem;
+}
+
+.sl-markdown-content table th,
+.sl-markdown-content table td {
+  padding: 0.5rem 0.85rem;
+}
+
+/* 提示词代码块：漫剧提示词都很长，允许换行显示，方便整段复制 */
+.sl-markdown-content pre.prompt-block code,
+.sl-markdown-content .expressive-code .frame pre code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* 引用块用作「官方原文」标记，左边加一条醒目的暖色条 */
+.sl-markdown-content blockquote {
+  border-inline-start-color: var(--sl-color-accent);
+  background: color-mix(in srgb, var(--sl-color-accent) 7%, transparent);
+  padding: 0.6rem 1rem;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
