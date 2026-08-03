@@ -2,6 +2,10 @@
 title: 从 0 开始的 AI 漫剧之旅
 description: 面向零基础创作者的 AI 漫剧知识库：影视语言扫盲、字节 Seedance 官方提示词语法、风格词库、官方避坑手册与可直接复制的模板。
 template: splash
+# 首页标题与站点名同名，覆盖掉 Starlight 默认拼接出的重复标题
+head:
+  - tag: title
+    content: 从 0 开始的 AI 漫剧之旅
 hero:
   tagline: 先看懂影视行话，再写对提示词，然后少踩官方已经写明白的坑。
   actions:
