@@ -1,0 +1,12 @@
+{
+  // Cloudflare Workers 静态资产托管（Workers Static Assets）
+  // 构建产物 dist/ 由 `npm run build` 生成，本文件只负责把它挂上去。
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "anime-drama-guide",
+  "compatibility_date": "2026-08-07",
+  "assets": {
+    "directory": "./dist",
+    // 找不到路径时回落到 Starlight 生成的 404.html
+    "not_found_handling": "404-page"
+  }
+}

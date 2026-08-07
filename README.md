@@ -3,11 +3,12 @@
 [![Astro](https://img.shields.io/badge/Astro-7.1-BC52EE?style=flat-square&logo=astro&logoColor=white)](https://astro.build/)
 [![Starlight](https://img.shields.io/badge/Starlight-0.41-0EA5E9?style=flat-square&logo=astro&logoColor=white)](https://starlight.astro.build/)
 [![Deploy](https://img.shields.io/badge/Vercel-已部署-000000?style=flat-square&logo=vercel&logoColor=white)](https://manju.saveme505.help)
+[![Cloudflare](https://img.shields.io/badge/Cloudflare_Workers-镜像站-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://manju.leolee0812.site)
 [![License](https://img.shields.io/badge/内容-仅供学习-f97316?style=flat-square)](#版权说明)
 
 面向零基础创作者的 AI 漫剧知识库。**先看懂影视行话，再写对提示词，然后少踩官方已经写明白的坑。**
 
-线上地址：<https://manju.saveme505.help>
+线上地址：<https://manju.saveme505.help>（主站）· <https://manju.leolee0812.site>（Cloudflare 镜像）
 
 ## 这个站在解决什么问题
 
@@ -48,9 +49,16 @@ Node 版本要求 `>=22.12.0`。
 
 ## 部署
 
-纯静态输出，托管在 Vercel，绑定自定义域名 `manju.saveme505.help`。
+纯静态输出，同一份 `dist/` 同时部署到两处，推送到 `main` 分支后两边都自动构建，**不使用任何手动部署命令**。
 
-推送到 `main` 分支后 Vercel 自动部署，**不使用手动 `vercel deploy`**。
+| 平台 | 域名 | 触发方式 |
+|---|---|---|
+| Vercel（主站） | `manju.saveme505.help` | Vercel 的 GitHub 集成自动部署 |
+| Cloudflare Workers（镜像 / 演示） | `manju.leolee0812.site` | GitHub Actions `deploy-cloudflare.yml` + `wrangler deploy` |
+
+Cloudflare 侧走 Workers Static Assets，配置见 `wrangler.jsonc`；Actions 需要仓库 Secret `CLOUDFLARE_API_TOKEN` 与 `CLOUDFLARE_ACCOUNT_ID`。
+
+`astro.config.mjs` 里的 `site` 仍指向主站域名，因此镜像站页面的 canonical 会指回 `manju.saveme505.help`，这是刻意为之，避免两个域名互相抢搜索引擎收录。
 
 ## 版权说明
 
