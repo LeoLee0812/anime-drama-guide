@@ -17,6 +17,8 @@ import Default from '@astrojs/starlight/components/Footer.astro';
 </aside>
 
 <script>
+	// 页脚在正文的层叠上下文里，会被右侧目录栏盖住点不到，挂到 body 下才能浮在最上层
+	document.body.appendChild(document.querySelector('.group-qr')!);
 	const card = document.getElementById('groupQrCard')!;
 	const pill = document.getElementById('groupQrPill')!;
 	const toggle = (open: boolean) => {
