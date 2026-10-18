@@ -1,0 +1,93 @@
+---
+// 覆盖 Starlight 页脚：保留默认页脚，再挂一个右下角常驻的进群二维码
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default><slot /></Default>
+
+<aside class="group-qr" aria-label="进群二维码">
+	<div class="group-qr-card" id="groupQrCard">
+		<img src="/qr.png" alt="群聊：小 Leo 的 AI 学习交流群（产业大会）二维码" width="720" height="1132" loading="lazy" />
+		<button class="group-qr-close" id="groupQrClose" type="button" aria-label="收起二维码">×</button>
+	</div>
+	<button class="group-qr-pill" id="groupQrPill" type="button" aria-expanded="true">
+		<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"></path></svg>
+		扫码进交流群
+	</button>
+</aside>
+
+<script>
+	const card = document.getElementById('groupQrCard')!;
+	const pill = document.getElementById('groupQrPill')!;
+	const toggle = (open: boolean) => {
+		card.hidden = !open;
+		pill.setAttribute('aria-expanded', String(open));
+	};
+	document.getElementById('groupQrClose')!.addEventListener('click', () => toggle(false));
+	pill.addEventListener('click', () => toggle(card.hidden));
+</script>
+
+<style>
+	.group-qr {
+		position: fixed;
+		z-index: 50;
+		right: calc(16px + env(safe-area-inset-right, 0px));
+		bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 10px;
+	}
+	.group-qr-card {
+		position: relative;
+		background: #fff;
+		border-radius: 14px;
+		padding: 8px;
+		box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+	}
+	.group-qr-card[hidden] {
+		display: none;
+	}
+	.group-qr-card img {
+		display: block;
+		width: auto;
+		height: min(240px, 34vh);
+		border-radius: 8px;
+	}
+	.group-qr-close {
+		position: absolute;
+		top: -10px;
+		right: -10px;
+		width: 26px;
+		height: 26px;
+		border-radius: 50%;
+		border: 0;
+		background: var(--sl-color-accent);
+		color: #fff;
+		font-size: 15px;
+		line-height: 1;
+		cursor: pointer;
+	}
+	.group-qr-pill {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		background: #fff;
+		color: #c2410c;
+		border: 1px solid rgba(0, 0, 0, 0.12);
+		border-radius: 999px;
+		padding: 9px 16px;
+		font-size: 15px;
+		cursor: pointer;
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+	}
+	.group-qr-pill svg {
+		width: 18px;
+		height: 18px;
+	}
+	@media (max-width: 520px) {
+		.group-qr-card img {
+			height: min(190px, 28vh);
+		}
+	}
+</style>

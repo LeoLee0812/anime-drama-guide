@@ -13,6 +13,8 @@ export default defineConfig({
         '面向零基础创作者的 AI 漫剧知识库：影视语言扫盲、字节 Seedance 官方提示词语法、风格词库、官方避坑手册与可直接复制的模板。',
       favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
+      // 页脚覆盖：附带右下角进群二维码
+      components: { Footer: './src/components/Footer.astro' },
       lastUpdated: true,
       pagination: true,
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
